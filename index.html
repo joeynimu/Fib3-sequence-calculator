@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fibonacci - Calculate the 4000<sup>th</sup> number</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="Joey Ng'ethe" name="author">
+</head>
+<body>
+	<header>			
+			<h1>Fibonacci Sequence n<sup>th</sup> number finder app</h1>
+	</header>
+
+	<section class="container">		
+		<aside class="col-xs-12 col-sm-6 col-md-6">
+		<h2>The Challenge</h2>			
+		<p>Calculate the <span class="btn btn-primary btn-primary-one">4000<sup>th</sup></span> fib3 number.</p> 
+<p>Fib3 is defined as a Fibonacci sequence that uses the <span class="btn btn-primary btn-primary-one">last 3</span> numbers to generate the next one (as opposed to the regular Fib)</p>
+<p>So the first <span class="btn btn-primary btn-primary-one">6 numbers</span> from this sequence will be <span class="btn btn-primary btn-primary-one">1 1 1 3 5 9</span></p>
+         <h2>My approach</h2>
+         <p>To solve the above problem; I generated the below variables and formular;</p>
+         <ul>
+	         <li>leting the n<sup>th</sup> number(4000) be a <span class="btn btn-primary btn-primary-one">variable n<span>;</li>
+	         <li>we store all our numbers in an array, <span class="btn btn-primary btn-primary-one">arr</span>;</li>
+	         <li>Our first three numbers will be equal to 1 hence <span class="btn btn-primary btn-primary-one">arr[0], arr[1], arr[2] = 1</span>
+	         ;</li>
+	         <li>Since the index position in arrays starts from 0 our <span class="btn btn-primary btn-primary-one">n<sup>th</sup></span> number will be sitting in the position <span class="btn btn-primary btn-primary-one">(n - 1)</span>. This position is held by a variable <span class="btn btn-primary btn-primary-one">nIndex = n-1</span></li>
+	         <li>I then do a loop and each time i calculate the next number provided our <span class="btn btn-primary btn-primary-one">n<sup>th</sup></span> number is not reached yet. I then push this next number into our array referenced by the<span class="btn btn-primary btn-primary-one">arr</span> variable. The formular for this would be;
+               <br>
+               <span class="btn btn-primary btn-primary-one">nextnumber = (lastnumber - 1) + (lastnumber - 2) + (lastnumber - 3)</span>
+	         </li>
+	         <li>I then return the nth number from the array using <span class="btn btn-primary btn-primary-one">arr[nIndex]<span></li>
+	         
+       </ul>
+         
+		</aside>
+		<article class="col-xs-12 col-sm-6 col-md-6">
+			<h2>My working Code</h2>
+			<pre>
+				<code language="javascript">
+                <em>
+function fiboThree(n) { 
+var arr = []; 
+arr[0] = 1;
+arr[1] = 1;
+arr[2] = 1;
+var nIndex = n - 1; 
+for (var c = 3; c < n; ++c) { 
+arr.push( (c < 3) ? c : arr[c-1] + arr[c-2] + arr[c-3]); 
+}
+return arr[nIndex]; 
+}
+console.log( fiboThree( 4000 ) );
+                </em>
+			    </code>
+		</pre>
+		<p>The Code above returns <span class="btn btn-primary btn-primary-one">infinity</span></p>
+		<div class="panel panel-default">
+			<p>Hence the <span class="btn btn-primary btn-primary-one">4000<sup>th</sup></span> number using the fib3 formular is <span class="btn btn-primary btn-primary-one">infinity</span></p>
+		</div>
+		<p>Enter your own n<sup>th</sup> number below and click the submit button to try it out</p>
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-6 col-md-6 no-padd-left"><input type="number" id="thevalue" required class="form-control"></div>
+			<div class="col-xs-12 col-sm-6 col-md-6"><a href="#" id="get" class="btn btn-primary">Submit</a></div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="result" class="alert alert-success" role="alert">
+			
+		</div>
+			
+		</article>
+		<div class="clearfix"></div>
+	</section>
+
+	<footer>
+		<p>Made with Love by Joe &copy; 2015</p>
+	</footer>
+	
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>	
+<script type="text/javascript" src="js/tweenmax.min.js"></script>	
+<script type="text/javascript" src="js/app.js"></script>	
+</body>
+</html>
